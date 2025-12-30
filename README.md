@@ -16,7 +16,7 @@ This project simulates a real-world inventory and product management system with
 ## Live Deployment
 
 Live Application:  
-< add deployed link here >
+https://product-management-dashboard-chi.vercel.app/login
 
 ---
 
@@ -183,7 +183,9 @@ DATABASE_URL=
 AUTH_SECRET=
 
 CLOUDINARY_CLOUD_NAME=
+
 CLOUDINARY_API_KEY=
+
 CLOUDINARY_API_SECRET=
 
 ---
