@@ -18,12 +18,24 @@ export default function HomePage() {
     <div className="min-h-screen bg-white text-black">
 
       {/* Page Header */}
-      <div className="max-w-6xl mx-auto px-6 py-10">
-        <h1 className="text-3xl font-black">Hello User</h1>
-        <p className="text-gray-600 font-medium mt-1">
-          Available Products
-        </p>
+      <div className="max-w-6xl mx-auto px-6 py-10 flex justify-between items-center">
+
+        <div>
+          <h1 className="text-3xl font-black">Hello User</h1>
+          <p className="text-gray-600 font-medium mt-1">
+            Available Products
+          </p>
+        </div>
+
+        <a
+          href="/login"
+          className="text-sm font-bold text-blue-700 hover:text-black transition-colors"
+        >
+          Go to Admin Dashboard →
+        </a>
+
       </div>
+
 
       {/* Product Grid */}
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 pb-20">
