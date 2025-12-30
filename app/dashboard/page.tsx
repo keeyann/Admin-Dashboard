@@ -60,13 +60,13 @@ export default async function DashboardPage({
           <StatCard title="Inventory Items" value={totalItems} icon="🔢" />
           <StatCard
             title="Stock Value"
-            value={`$${totalValue.toLocaleString()}`}
+            value={`₹${totalValue.toLocaleString()}`}
             icon="💰"
             color="text-green-600"
           />
           <StatCard
             title="Avg. Item Price"
-            value={`$${avgPrice.toFixed(2)}`}
+            value={`₹${avgPrice.toFixed(2)}`}
             icon="📊"
             color="text-blue-600"
           />
@@ -153,7 +153,7 @@ export default async function DashboardPage({
                     <td className="px-6 py-4 font-medium">{p.category}</td>
 
                     <td className="px-6 py-4 font-bold text-gray-950">
-                      ${p.price.toFixed(2)}
+                      ₹{p.price.toFixed(2)}
                     </td>
 
                     <td className="px-6 py-4">

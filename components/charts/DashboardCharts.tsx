@@ -69,7 +69,7 @@ export default function DashboardCharts({ data }: DashboardChartsProps) {
 
       <div className="bg-white p-6 rounded-xl border border-gray-400 shadow-sm min-h-[350px]">
         <h3 className="text-lg font-bold mb-6 text-gray-900">
-          Inventory Value by Category ($)
+          Inventory Value by Category (₹)
         </h3>
 
         {categoryValueData.length > 0 ? (
@@ -90,7 +90,7 @@ export default function DashboardCharts({ data }: DashboardChartsProps) {
                 ))}
               </Pie>
               <Tooltip 
-                formatter={(value: any) => `$${Number(value).toLocaleString()}`}
+                formatter={(value: any) => `₹${Number(value).toLocaleString()}`}
                 contentStyle={{ borderRadius: "8px", border: "none", boxShadow: "0 4px 12px rgba(0,0,0,0.1)" }}
               />
               <Legend verticalAlign="bottom" height={36}/>
