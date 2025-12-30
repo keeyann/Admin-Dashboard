@@ -1,106 +1,136 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
-import { useProducts } from "@/hooks/useProducts";
 import { useState } from "react";
 
-export default function Home() {
-  const { data, isLoading, error } = useProducts();
-  const [query, setQuery] = useState("");
+export default function HomePage() {
+  const [products, setProducts] = useState<any[]>([]);
+  const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
 
-  const filteredProducts = data?.filter((p: any) =>
-    p.name.toLowerCase().includes(query.toLowerCase()) ||
-    p.category.toLowerCase().includes(query.toLowerCase())
-  );
+  // Fetch products from API on mount (client fetch to stay in sync)
+  if (products.length === 0) {
+    fetch("/api/products")
+      .then(res => res.json())
+      .then(data => setProducts(data));
+  }
 
   return (
-    <div className="min-h-screen bg-white">
-      <div className="max-w-6xl mx-auto py-10 px-6 space-y-6">
+    <div className="min-h-screen bg-white text-black">
 
-        <h1 className="text-3xl font-extrabold text-black">
-          Hello User
-        </h1>
+      {/* Page Header */}
+      <div className="max-w-6xl mx-auto px-6 py-10">
+        <h1 className="text-3xl font-black">Hello User</h1>
+        <p className="text-gray-600 font-medium mt-1">
+          Available Products
+        </p>
+      </div>
 
-        <div className="flex items-center justify-between">
-          <h2 className="text-xl font-bold text-black">
-            Available Products
-          </h2>
+      {/* Product Grid */}
+      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 pb-20">
 
-          <Link
-            href="/dashboard"
-            className="px-4 py-2 rounded-md bg-blue-600 text-white font-medium"
+        {products.map(p => (
+          <div
+            key={p.id}
+            onClick={() => setSelectedProduct(p)}
+            className="cursor-pointer bg-white border border-gray-300 rounded-2xl p-4 shadow-sm hover:shadow-md transition"
           >
-            Go to Admin Dashboard
-          </Link>
-        </div>
-
-        <div className="w-full max-w-md">
-          <input
-            value={query}
-            onChange={e => setQuery(e.target.value)}
-            placeholder="Search products..."
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg text-black font-medium"
-          />
-        </div>
-
-        {isLoading && (
-          <p className="text-gray-600">Loading...</p>
-        )}
-
-        {error && (
-          <p className="text-red-600">Failed to load products</p>
-        )}
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProducts?.map((p: any) => (
-            <div
-              key={p.id}
-              className="border rounded-xl bg-white shadow-sm overflow-hidden"
-            >
+            <div className="w-full h-40 bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center">
               {p.imageUrl ? (
-                <div className="relative w-full h-40">
-                  <Image
-                    src={p.imageUrl}
-                    alt={p.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
+                <Image
+                  src={p.imageUrl}
+                  width={300}
+                  height={300}
+                  alt={p.name}
+                  className="object-contain"
+                />
               ) : (
-                <div className="w-full h-40 bg-gray-200 flex items-center justify-center text-gray-600">
-                  No Image
-                </div>
+                <span className="text-gray-500 text-xs">No Image</span>
               )}
-
-              <div className="p-4 space-y-1">
-                <h3 className="text-lg font-bold text-black">
-                  {p.name}
-                </h3>
-
-                <p className="text-sm text-gray-600 line-clamp-2">
-                  {p.description}
-                </p>
-
-                <div className="text-sm font-semibold mt-2">
-                  Price: ${p.price}
-                </div>
-
-                <div className="text-xs text-gray-500">
-                  Stock: {p.stock}
-                </div>
-              </div>
             </div>
-          ))}
-        </div>
 
-        {filteredProducts?.length === 0 && (
-          <p className="text-gray-500 font-medium">
-            No products match your search.
-          </p>
-        )}
+            <div className="mt-3">
+              <h2 className="font-bold text-lg">{p.name}</h2>
+              <p className="text-sm text-gray-600 line-clamp-2">
+                {p.description}
+              </p>
+
+              <p className="mt-2 font-black">
+                ₹{p.price}
+              </p>
+            </div>
+          </div>
+        ))}
 
       </div>
+
+      {/* ===================== PRODUCT MODAL ===================== */}
+
+      {selectedProduct && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+
+          <div className="bg-white w-full max-w-2xl rounded-2xl border-2 border-gray-300 shadow-xl overflow-hidden">
+
+            {/* Header */}
+            <div className="flex justify-between items-center px-6 py-4 border-b">
+              <h2 className="text-xl font-black">{selectedProduct.name}</h2>
+
+              <button
+                onClick={() => setSelectedProduct(null)}
+                className="text-gray-500 font-bold hover:text-black"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Image */}
+            <div className="w-full h-80 bg-gray-100 flex items-center justify-center">
+              {selectedProduct.imageUrl ? (
+                <img
+                  src={selectedProduct.imageUrl}
+                  className="h-full object-contain"
+                  alt="Product"
+                />
+              ) : (
+                <span className="text-gray-400 text-sm">No Image</span>
+              )}
+            </div>
+
+            {/* Details */}
+            <div className="px-6 py-4 space-y-2">
+
+              <p className="text-gray-700">
+                {selectedProduct.description}
+              </p>
+
+              <p className="text-sm font-bold">
+                Category:
+                <span className="font-medium ml-1">
+                  {selectedProduct.category}
+                </span>
+              </p>
+
+              <p className="text-lg font-black">
+                ₹{selectedProduct.price}
+              </p>
+
+              <p className="text-sm font-bold">
+                Stock:
+                {selectedProduct.stock > 0 ? (
+                  <span className="text-green-600 ml-1">
+                    {selectedProduct.stock} units available
+                  </span>
+                ) : (
+                  <span className="text-red-600 ml-1">
+                    Out of stock
+                  </span>
+                )}
+              </p>
+
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }
