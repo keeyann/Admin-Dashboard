@@ -27,7 +27,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }),
   ],
   pages: {
-    signIn: "/login", // Redirect to this custom page if not logged in
+    signIn: "/login", 
   },
   session: { strategy: "jwt" },
 });

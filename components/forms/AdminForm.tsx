@@ -17,7 +17,6 @@ export default function AdminForm() {
 
     const formData = new FormData(e.currentTarget);
     
-    // Internal Server Action call (defined below for simplicity)
     const response = await fetch("/api/admin/create", {
       method: "POST",
       body: JSON.stringify(Object.fromEntries(formData)),

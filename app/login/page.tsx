@@ -36,9 +36,12 @@ export default function LoginPage() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-100 p-4">
       <div className="w-full max-w-md bg-white p-8 rounded-2xl border border-gray-300 shadow-xl">
+        
         <header className="text-center mb-8">
           <h1 className="text-3xl font-black text-gray-900">Admin Portal</h1>
-          <p className="text-gray-500 font-bold mt-2 text-sm uppercase italic">Secure Login Required</p>
+          <p className="text-gray-500 font-bold mt-2 text-sm uppercase italic">
+            Secure Login Required
+          </p>
         </header>
 
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -47,35 +50,49 @@ export default function LoginPage() {
               {error}
             </div>
           )}
-          
+
           <div>
-            <label className="block text-sm font-black text-gray-900 mb-1">Email Address</label>
-            <input 
-              name="email" 
-              type="email" 
-              required 
-              className="w-full p-3 border-2 border-gray-300 rounded-lg text-black font-medium focus:border-black outline-none transition-all" 
+            <label className="block text-sm font-black text-gray-900 mb-1">
+              Email Address
+            </label>
+            <input
+              name="email"
+              type="email"
+              required
+              className="w-full p-3 border-2 border-gray-300 rounded-lg text-black font-medium focus:border-black outline-none transition-all"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-black text-gray-900 mb-1">Password</label>
-            <input 
-              name="password" 
-              type="password" 
-              required 
-              className="w-full p-3 border-2 border-gray-300 rounded-lg text-black font-medium focus:border-black outline-none transition-all" 
+            <label className="block text-sm font-black text-gray-900 mb-1">
+              Password
+            </label>
+            <input
+              name="password"
+              type="password"
+              required
+              className="w-full p-3 border-2 border-gray-300 rounded-lg text-black font-medium focus:border-black outline-none transition-all"
             />
           </div>
 
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             disabled={loading}
             className="w-full bg-black text-white p-4 rounded-lg font-black text-lg hover:bg-gray-800 transition-all shadow-lg active:scale-[0.98] disabled:opacity-50"
           >
             {loading ? "Authenticating..." : "Authorize Access"}
           </button>
         </form>
+
+        <div className="mt-6 flex justify-center">
+          <a
+            href="/"
+            className="text-sm font-bold text-blue-700 hover:text-black transition-colors"
+          >
+            ← Back to Customer Product Menu
+          </a>
+        </div>
+
       </div>
     </div>
   );

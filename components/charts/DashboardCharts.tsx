@@ -21,7 +21,6 @@ type DashboardChartsProps = {
 const COLORS = ["#0ea5e9", "#22c55e", "#f59e0b", "#ef4444", "#8b5cf6", "#ec4899"];
 
 export default function DashboardCharts({ data }: DashboardChartsProps) {
-  // Logic to calculate value distribution by category for the Pie Chart
   const categoryValueData = data?.reduce((acc: any[], item) => {
     const existing = acc.find((c) => c.name === item.category);
     const totalValue = item.price * item.stock;
@@ -35,7 +34,6 @@ export default function DashboardCharts({ data }: DashboardChartsProps) {
 
   return (
     <div className="space-y-8">
-      {/* Stock Levels Bar Chart */}
       <div className="bg-white p-6 rounded-xl border border-gray-400 shadow-sm min-h-[350px]">
         <h3 className="text-lg font-bold mb-6 text-gray-900">
           Stock Levels by Product
@@ -69,7 +67,6 @@ export default function DashboardCharts({ data }: DashboardChartsProps) {
         )}
       </div>
 
-      {/* Inventory Value Pie Chart */}
       <div className="bg-white p-6 rounded-xl border border-gray-400 shadow-sm min-h-[350px]">
         <h3 className="text-lg font-bold mb-6 text-gray-900">
           Inventory Value by Category ($)

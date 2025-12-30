@@ -6,11 +6,9 @@
 }
 
 @theme {
-  /* Define custom colors here */
   --color-brand-blue: #0ea5e9;
   --color-admin-bg: #f9fafb;
 
-  /* Define custom spacing or fonts if needed */
   --font-sans: "Inter", ui-sans-serif, system-ui;
 }
 

@@ -9,7 +9,6 @@ export const runtime = "nodejs";
 export async function POST(req: Request) {
   const session = await auth();
   
-  // Security Check: Only logged-in admins can create other admins
   if (!session) {
     return NextResponse.json({ message: "Not authorized" }, { status: 401 });
   }

@@ -5,7 +5,7 @@ import { auth } from "@/auth";
 
 export async function createAdmin(formData: FormData) {
   const session = await auth();
-  if (!session) throw new Error("Not authorized"); // Only admins can create admins
+  if (!session) throw new Error("Not authorized"); 
 
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
