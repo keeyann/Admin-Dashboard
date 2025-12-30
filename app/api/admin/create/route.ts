@@ -2,6 +2,9 @@ import { prisma } from "@/lib/db";
 import bcrypt from "bcryptjs";
 import { auth } from "@/auth";
 import { NextResponse } from "next/server";
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+
 
 export async function POST(req: Request) {
   const session = await auth();
