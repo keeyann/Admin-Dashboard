@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { productSchema } from "@/lib/validation";
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+
 
 export async function POST(request: Request) {
   try {
