@@ -7,7 +7,6 @@ export default function HomePage() {
   const [products, setProducts] = useState<any[]>([]);
   const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
 
-  // Fetch products from API on mount (client fetch to stay in sync)
   if (products.length === 0) {
     fetch("/api/products")
       .then(res => res.json())
@@ -17,7 +16,6 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white text-black">
 
-      {/* Page Header */}
       <div className="max-w-6xl mx-auto px-6 py-10 flex justify-between items-center">
 
         <div>
@@ -36,8 +34,6 @@ export default function HomePage() {
 
       </div>
 
-
-      {/* Product Grid */}
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 pb-20">
 
         {products.map(p => (
@@ -75,14 +71,12 @@ export default function HomePage() {
 
       </div>
 
-      {/* ===================== PRODUCT MODAL ===================== */}
 
       {selectedProduct && (
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
 
           <div className="bg-white w-full max-w-2xl rounded-2xl border-2 border-gray-300 shadow-xl overflow-hidden">
 
-            {/* Header */}
             <div className="flex justify-between items-center px-6 py-4 border-b">
               <h2 className="text-xl font-black">{selectedProduct.name}</h2>
 
@@ -94,7 +88,6 @@ export default function HomePage() {
               </button>
             </div>
 
-            {/* Image */}
             <div className="w-full h-80 bg-gray-100 flex items-center justify-center">
               {selectedProduct.imageUrl ? (
                 <img
@@ -107,7 +100,6 @@ export default function HomePage() {
               )}
             </div>
 
-            {/* Details */}
             <div className="px-6 py-4 space-y-2">
 
               <p className="text-gray-700">
