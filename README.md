@@ -24,8 +24,8 @@ https://product-management-dashboard-chi.vercel.app/login
 
 Use the following credentials to log in to the admin dashboard:
 
-**Email:** < add demo admin email here >  
-**Password:** < add demo admin password here >
+**Email:** admin@example.com 
+**Password:** admin123
 
 _(These credentials are created only for demonstration purposes.)_
 
@@ -34,7 +34,7 @@ _(These credentials are created only for demonstration purposes.)_
 ## Demo Video
 
 Demo Video Link (3–5 mins):  
-< add YouTube / Google Drive link here >
+https://drive.google.com/drive/folders/1rUtEvGA6gAuZxafOuFrP8BSwURBJlTC8?usp=sharing
 
 The demo showcases:
 
