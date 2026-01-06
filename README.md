@@ -16,7 +16,7 @@ This project simulates a real-world inventory and product management system with
 ## Live Deployment
 
 Live Application:  
-https://product-management-dashboard-chi.vercel.app/login
+https://product-management-dashboard-chi.vercel.app
 
 ---
 
@@ -25,6 +25,7 @@ https://product-management-dashboard-chi.vercel.app/login
 Use the following credentials to log in to the admin dashboard:
 
 **Email:** admin@example.com 
+
 **Password:** admin123
 
 _(These credentials are created only for demonstration purposes.)_
